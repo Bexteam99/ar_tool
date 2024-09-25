@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Flow</title>
+    <!-- Include Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('Background.jpg'); /* Add your background image URL here */
+            background-size: cover; /* Cover the entire body */
+            background-position: center; /* Center the image */
+            background-repeat: no-repeat; /* Do not repeat the image */
+            margin: 0;
+            position: relative;
+        }
+
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .logo img {
+            width: 100px; /* Adjust logo size */
+            height: auto;
+        }
+
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .nav-button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 150px;
+            height: 150px;
+            border: 2px solid #7851A9;
+            border-radius: 10px;
+            background-color: #7851A9;
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background-color: #c6bbd3;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-button i {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        /* Popup modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: auto;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            width: 300px;
+            text-align: center;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #333;
+        }
+
+        select {
+            padding: 10px;
+            margin-top: 20px;
+            width: 100%;
+            font-size: 16px;
+            border: 2px solid #7851A9;
+            border-radius: 5px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        select:focus {
+            border-color: #c6bbd3;
+            outline: none;
+        }
+
+        .submit-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #7851A9;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background-color: #c6bbd3;
+        }
+    </style>
+</head>
+<body>
+    <!-- Logo in the top-left corner -->
+    <div class="logo">
+        <img src="Clarity_Logo.png" alt="Logo">
+    </div>
+
+    <div class="button-container">
+        <button class="nav-button" onclick="openModal('Alpha')">
+            <i class="fas fa-atom"></i> Alpha
+        </button>
+        <button class="nav-button" onclick="openModal('Beta')">
+            <i class="fas fa-bolt"></i> Beta
+        </button>
+        <button class="nav-button" onclick="openModal('Gamma')">
+            <i class="fas fa-cogs"></i> Gamma
+        </button>
+        <button class="nav-button" onclick="openModal('Delta')">
+            <i class="fas fa-dice-d6"></i> Delta
+        </button>
+        <button class="nav-button" onclick="openModal('Epsilon')">
+            <i class="fas fa-ellipsis-h"></i> Epsilon
+        </button>
+        <button class="nav-button" onclick="openModal('Sigma')">
+            <i class="fas fa-signal"></i> Sigma
+        </button>
+        <button class="nav-button" onclick="openModal('Sirius')">
+            <i class="fas fa-star"></i> Sirius
+        </button>
+        <!-- New Buttons -->
+        <button class="nav-button" onclick="openModal('Kappa')">
+            <i class="fas fa-kiwi-bird"></i> Kappa
+        </button>
+        <button class="nav-button" onclick="openModal('Theta')">
+            <i class="fas fa-theater-masks"></i> Theta
+        </button>
+        <button class="nav-button" onclick="openModal('Zeta')">
+            <i class="fas fa-mountain"></i> Zeta
+        </button>
+        <button class="nav-button" onclick="openModal('Omega')">
+            <i class="fas fa-infinity"></i> Omega
+        </button>
+    </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Select Department</h2>
+            <select id="department">
+                <option value="">Select</option>
+                <option value="AR">AR</option>
+                <option value="Coding">Coding</option>
+            </select>
+            <button class="submit-btn" onclick="routeToApp()">Go</button>
+        </div>
+    </div>
+
+    <!-- Footer in the bottom-right corner -->
+    <div class="footer">
+        © 2024 Business Excellence
+    </div>
+
+    <script>
+        var selectedPractice = "";
+
+        function openModal(practice) {
+            selectedPractice = practice;
+            document.getElementById("myModal").style.display = "flex";
+        }
+
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+
+        function routeToApp() {
+            var department = document.getElementById("department").value;
+            var link;
+
+            if (department === "") {
+                alert("Please select a department");
+                return;
+            }
+
+            switch (selectedPractice) {
+                case "Alpha":
+                    link = department === "AR"
+                        ? "https://www.appsheet.com/start/e17c04a7-6a98-4a5c-9f9d-8252ac9d0f35?platform=desktop#view=AR%20MENU"
+                        : "https://www.appsheet.com/start/e17c04a7-6a98-4a5c-9f9d-8252ac9d0f35?platform=desktop#view=CODING%20MENU";
+                    break;
+                case "Beta":
+                    link = department === "AR"
+                        ? "https://www.appsheet.com/start/f83d4311-e5a4-432c-b882-3059d454fab5?platform=desktop#view=AR%20MENU"
+                        : "https://www.appsheet.com/start/f83d4311-e5a4-432c-b882-3059d454fab5?platform=desktop#view=CODING%20MENU";
+                    break;
+                case "Gamma":
+                    link = department === "AR"
+                        ? "https://www.appsheet.com/start/b8dba1aa-81de-41bf-8ff0-7238d87b1d3f?platform=desktop#view=AR%20MENU"
+                        : "https://www.appsheet.com/start/b8dba1aa-81de-41bf-8ff0-7238d87b1d3f?platform=desktop#view=CODING%20MENU";
+                    break;
+                case "Delta":
+                    link = department === "AR"
+                        ? "https://www.appsheet.com/start/52396376-5b54-4e4b-ae4d-4d7e7642ab13?platform=desktop#view=AR%20MENU"
+                        : "https://www.appsheet.com/start/52396376-5b54-4e4b-ae4d-4d7e7642ab13?platform=desktop#view=CODING%20MENU";
+                    break;
+                case "Epsilon":
+                    link = department === "AR"
+                        ? "https://www.appsheet.com/start/9467a2f5-f885-466e-b9ab-7b41bbf6b36c?platform=desktop#view=AR%20MENU"
+                        : "https://www.appsheet.com/start/9467a2f5-f885-466e-b9ab-7b41bbf6b36c?platform=desktop#view=CODING%20MENU";
+                    break;
+                case "Sigma":
+                    link = department === "AR"
+                        ? "https://www.appsheet.com/start/1f7be4bb-50c7-4890-b2c5-5f4f2b19efb1?platform=desktop#view=AR%20MENU"
+                        : "https://www.appsheet.com/start/1f7be4bb-50c7-4890-b2c5-5f4f2b19efb1?platform=desktop#view=CODING%20MENU";
+                    break;
+                case "Sirius":
+                    link = department === "AR"
+                        ? "https://www.appsheet.com/start/cf64c8b3-1bb2-4997-ae37-e0ca81e60dbe?platform=desktop#view=AR%20MENU"
+                        : "https://www.appsheet.com/start/cf64c8b3-1bb2-4997-ae37-e0ca81e60dbe?platform=desktop#view=CODING%20MENU";
+                    break;
+                case "Kappa":
+                    link = department === "AR"
+                        ? "https://www.appsheet.com/start/2a965a52-8c4b-408b-8123-2e79dc1f9047?platform=desktop#view=AR%20MENU"
+                        : "https://www.appsheet.com/start/2a965a52-8c4b-408b-8123-2e79dc1f9047?platform=desktop#view=CODING%20MENU";
+                    break;
+                case "Theta":
+                    link = department === "AR"
+                        ? "https://www.appsheet.com/start/498841d0-6705-4977-9e04-4acf909f5051?platform=desktop#view=AR%20MENU"
+                        : "https://www.appsheet.com/start/498841d0-6705-4977-9e04-4acf909f5051?platform=desktop#view=CODING%20MENU";
+                    break;
+                case "Zeta":
+                    link = department === "AR"
+                        ? "https://www.appsheet.com/start/2269df5a-2549-4e79-8fec-2cdf52e6f7ae?platform=desktop#view=AR%20MENU"
+                        : "https://www.appsheet.com/start/2269df5a-2549-4e79-8fec-2cdf52e6f7ae?platform=desktop#view=CODING%20MENU";
+                    break;
+                case "Omega":
+                    link = department === "AR"
+                        ? "https://www.appsheet.com/start/e2f69520-d005-49ed-b475-b0520aa2df16?platform=desktop#view=AR%20MENU"
+                        : "https://www.appsheet.com/start/e2f69520-d005-49ed-b475-b0520aa2df16?platform=desktop#view=CODING%20MENU";
+                    break;
+            }
+            
+            // Open the link in a new tab
+            window.open(link, '_blank');
+            closeModal();
+        }
+    </script>
+</body>
+</html>
