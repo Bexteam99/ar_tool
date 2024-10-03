@@ -37,6 +37,15 @@
             text-align: center;
         }
 
+        /* Added styles for headers */
+        .header-ar {
+            color: #8C3061; /* Color for Access AR */
+        }
+
+        .header-coding {
+            color: #8C3061; /* Color for Access Coding */
+        }
+
         .button-container {
             display: flex;
             flex-wrap: wrap;
@@ -87,7 +96,7 @@
     </div>
 
     <div class="section">
-        <h2>Access AR</h2>
+        <h2 class="header-ar">Access AR</h2>
         <div class="button-container">
             <button class="nav-button" onclick="openLink('AR', 'Alpha')">
                 <i class="fas fa-atom"></i> Alpha
@@ -126,7 +135,7 @@
     </div>
 
     <div class="section">
-        <h2>Access Coding</h2>
+        <h2 class="header-coding">Access Coding</h2>
         <div class="button-container">
             <button class="nav-button" onclick="openLink('Coding')">
                 <i class="fas fa-code"></i> Coding
@@ -173,19 +182,11 @@
                     case 'Sirius':
                         link = "https://www.appsheet.com/start/be5b647d-ede2-4cf2-a0f6-805e545d70b8?platform=desktop#view=SIRIUS";
                         break;
-                    case 'Omega':
-                        link = "https://www.appsheet.com/start/be5b647d-ede2-4cf2-a0f6-805e545d70b8?platform=desktop#view=OMEGA";
-                        break;       
                 }
             } else if (department === 'Coding') {
-                link = "https://www.appsheet.com/start/be5b647d-ede2-4cf2-a0f6-805e545d70b8?platform=desktop#view=CODING";
+                link = "https://www.appsheet.com/start/be5b647d-ede2-4cf2-a0f6-805e545d70b8?platform=desktop#view=Coding";
             }
-
-            if (link) {
-                window.open(link, "_blank");
-            } else {
-                alert("No link available for this practice.");
-            }
+            window.open(link, '_blank');
         }
     </script>
 </body>
