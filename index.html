@@ -21,10 +21,22 @@
             position: relative;
         }
 
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.5); /* White overlay with 50% opacity */
+            z-index: 0; /* Ensure the overlay is behind the content */
+        }
+
         .logo {
             position: absolute;
             top: 20px;
             left: 20px;
+            z-index: 1; /* Ensure logo is above overlay */
         }
 
         .logo img {
@@ -35,10 +47,12 @@
         .section {
             margin-bottom: 30px;
             text-align: center;
+            position: relative;
+            z-index: 1; /* Ensure section is above overlay */
         }
 
         .header-ar, .header-coding {
-            color: #0C134F; /* Color for Access AR */
+            color: #8C3061; /* Color for Access AR */
         }
 
         .button-container {
@@ -65,6 +79,7 @@
             box-shadow: 0 4px 8px rgba(103, 75, 75, 0.1);
             transition: all 0.3s ease;
             cursor: pointer;
+            z-index: 1; /* Ensure button is above overlay */
         }
 
         .nav-button:hover {
@@ -83,6 +98,7 @@
             right: 20px;
             font-size: 14px;
             color: #555;
+            z-index: 1; /* Ensure footer is above overlay */
         }
 
         .loading-screen {
@@ -159,7 +175,7 @@
         <h2 class="header-coding">Access Coding</h2>
         <div class="button-container">
             <button class="nav-button" onclick="openLink('Coding')">
-                <i class="fas fa-code-fork"></i> Coding
+                <i class="fas fa-code"></i> Coding
             </button>
         </div>
     </div>
@@ -220,11 +236,10 @@
             // Show loading screen
             document.getElementById('loadingScreen').style.display = 'flex';
 
-            // Simulate a delay to display the loading screen (for demo purposes)
+            // Navigate to the link after a delay to show the loading screen
             setTimeout(function() {
-                window.open(link, '_blank');
-                document.getElementById('loadingScreen').style.display = 'none'; // Hide loading screen after opening the link
-            }, 2000);
+                window.location.href = link;
+            }, 1000); // Delay for 1 second
         }
     </script>
 </body>
