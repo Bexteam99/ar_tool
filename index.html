@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Work Flow</title>
-    <!-- Include Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
@@ -14,7 +13,7 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
-            background-image: url('Background.jpg'); /* Add your background image URL here */
+            background-image: url('Background.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -29,19 +28,19 @@
         }
 
         .logo img {
-            width: 100px; /* Adjust logo size */
+            width: 100px;
             height: auto;
         }
 
         .section {
             margin-bottom: 30px;
-            text-align: center; /* Center the section header */
+            text-align: center;
         }
 
         .button-container {
             display: flex;
-            flex-wrap: wrap; /* Wrap buttons to fit screen */
-            gap: 15px; /* Reduced gap between buttons */
+            flex-wrap: wrap;
+            gap: 15px;
             justify-content: center;
         }
 
@@ -50,14 +49,14 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 100px; /* Reduced width */
-            height: 100px; /* Reduced height */
+            width: 100px;
+            height: 100px;
             border: 2px solid #7851A9;
             border-radius: 10px;
             background-color: #7851A9;
             color: #fff;
             text-decoration: none;
-            font-size: 14px; /* Adjust font size */
+            font-size: 14px;
             font-weight: bold;
             box-shadow: 0 4px 8px rgba(103, 75, 75, 0.1);
             transition: all 0.3s ease;
@@ -69,8 +68,8 @@
         }
 
         .nav-button i {
-            font-size: 30px; /* Adjusted icon size */
-            margin-bottom: 5px; /* Reduced margin below icon */
+            font-size: 30px;
+            margin-bottom: 5px;
         }
 
         .footer {
@@ -83,55 +82,49 @@
     </style>
 </head>
 <body>
-    <!-- Logo in the top-left corner -->
     <div class="logo">
         <img src="Clarity_Logo.png" alt="Logo">
     </div>
 
-    <!-- AR Section -->
-
     <div class="section">
         <h2>Access AR</h2>
-
-    <div class="button-container">
-        <button class="nav-button" onclick="openModal('Alpha')">
-            <i class="fas fa-atom"></i> Alpha
-        </button>
-        <button class="nav-button" onclick="openModal('Beta')">
-            <i class="fas fa-bolt"></i> Beta
-        </button>
-        <button class="nav-button" onclick="openModal('Gamma')">
-            <i class="fas fa-cogs"></i> Gamma
-        </button>
-        <button class="nav-button" onclick="openModal('Delta')">
-            <i class="fas fa-dice-d6"></i> Delta
-        </button>
-        <button class="nav-button" onclick="openModal('Epsilon')">
-            <i class="fas fa-ellipsis-h"></i> Epsilon
-        </button>
-        <button class="nav-button" onclick="openModal('Sigma')">
-            <i class="fas fa-signal"></i> Sigma
-        </button>
-        <button class="nav-button" onclick="openModal('Sirius')">
-            <i class="fas fa-star"></i> Sirius
-        </button>
-        <!-- New Buttons -->
-        <button class="nav-button" onclick="openModal('Kappa')">
-            <i class="fas fa-kiwi-bird"></i> Kappa
-        </button>
-        <button class="nav-button" onclick="openModal('Theta')">
-            <i class="fas fa-theater-masks"></i> Theta
-        </button>
-        <button class="nav-button" onclick="openModal('Zeta')">
-            <i class="fas fa-mountain"></i> Zeta
-        </button>
-        <button class="nav-button" onclick="openModal('Omega')">
-            <i class="fas fa-infinity"></i> Omega
-        </button>
-    </div>
+        <div class="button-container">
+            <button class="nav-button" onclick="openLink('AR', 'Alpha')">
+                <i class="fas fa-atom"></i> Alpha
+            </button>
+            <button class="nav-button" onclick="openLink('AR', 'Beta')">
+                <i class="fas fa-bolt"></i> Beta
+            </button>
+            <button class="nav-button" onclick="openLink('AR', 'Gamma')">
+                <i class="fas fa-cogs"></i> Gamma
+            </button>
+            <button class="nav-button" onclick="openLink('AR', 'Delta')">
+                <i class="fas fa-dice-d6"></i> Delta
+            </button>
+            <button class="nav-button" onclick="openLink('AR', 'Epsilon')">
+                <i class="fas fa-ellipsis-h"></i> Epsilon
+            </button>
+            <button class="nav-button" onclick="openLink('AR', 'Sigma')">
+                <i class="fas fa-signal"></i> Sigma
+            </button>
+            <button class="nav-button" onclick="openLink('AR', 'Sirius')">
+                <i class="fas fa-star"></i> Sirius
+            </button>
+            <button class="nav-button" onclick="openLink('AR', 'Kappa')">
+                <i class="fas fa-kiwi-bird"></i> Kappa
+            </button>
+            <button class="nav-button" onclick="openLink('AR', 'Theta')">
+                <i class="fas fa-theater-masks"></i> Theta
+            </button>
+            <button class="nav-button" onclick="openLink('AR', 'Zeta')">
+                <i class="fas fa-mountain"></i> Zeta
+            </button>
+            <button class="nav-button" onclick="openLink('AR', 'Omega')">
+                <i class="fas fa-infinity"></i> Omega
+            </button>
+        </div>
     </div>
 
-    <!-- Coding Section (Single Button) -->
     <div class="section">
         <h2>Access Coding</h2>
         <div class="button-container">
@@ -141,7 +134,6 @@
         </div>
     </div>
 
-    <!-- Footer in the bottom-right corner -->
     <div class="footer">
         © 2024 Business Excellence
     </div>
@@ -183,9 +175,7 @@
                         break;
                     case 'Omega':
                         link = "https://www.appsheet.com/start/be5b647d-ede2-4cf2-a0f6-805e545d70b8?platform=desktop#view=OMEGA";
-                        break;      
-
-                    // Add cases for other practices as needed
+                        break;       
                 }
             } else if (department === 'Coding') {
                 link = "https://www.appsheet.com/start/be5b647d-ede2-4cf2-a0f6-805e545d70b8?platform=desktop#view=CODING";
