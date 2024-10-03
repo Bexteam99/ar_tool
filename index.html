@@ -37,13 +37,8 @@
             text-align: center;
         }
 
-        /* Added styles for headers */
-        .header-ar {
+        .header-ar, .header-coding {
             color: #8C3061; /* Color for Access AR */
-        }
-
-        .header-coding {
-            color: #8C3061; /* Color for Access Coding */
         }
 
         .button-container {
@@ -69,6 +64,7 @@
             font-weight: bold;
             box-shadow: 0 4px 8px rgba(103, 75, 75, 0.1);
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .nav-button:hover {
@@ -87,6 +83,31 @@
             right: 20px;
             font-size: 14px;
             color: #555;
+        }
+
+        .loading-screen {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ffffff; /* White background */
+            z-index: 999;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .loading-animation {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .loading-animation img {
+            width: 400px; /* Set width to 400px */
+            height: 300px; /* Set height to 300px */
         }
     </style>
 </head>
@@ -147,6 +168,12 @@
         © 2024 Business Excellence
     </div>
 
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-animation">
+            <img src="Loading.gif" alt="Loading"> <!-- Add your GIF here -->
+        </div>
+    </div>
+
     <script>
         function openLink(department, practice) {
             var link;
@@ -158,35 +185,46 @@
                     case 'Beta':
                         link = "https://www.appsheet.com/start/be5b647d-ede2-4cf2-a0f6-805e545d70b8?platform=desktop#view=BETA";
                         break;
-                    case 'Delta':
-                        link = "https://www.appsheet.com/start/be5b647d-ede2-4cf2-a0f6-805e545d70b8?platform=desktop#view=DELTA";
-                        break;
                     case 'Gamma':
                         link = "https://www.appsheet.com/start/be5b647d-ede2-4cf2-a0f6-805e545d70b8?platform=desktop#view=GAMMA";
-                        break;    
-                    case 'Sigma':
-                        link = "https://www.appsheet.com/start/be5b647d-ede2-4cf2-a0f6-805e545d70b8?platform=desktop#view=SIGMA";
                         break;
-                    case 'Zeta':
-                        link = "https://www.appsheet.com/start/be5b647d-ede2-4cf2-a0f6-805e545d70b8?platform=desktop#view=ZETA";
-                        break;
-                    case 'Theta':
-                        link = "https://www.appsheet.com/start/be5b647d-ede2-4cf2-a0f6-805e545d70b8?platform=desktop#view=THETA";
+                    case 'Delta':
+                        link = "https://www.appsheet.com/start/be5b647d-ede2-4cf2-a0f6-805e545d70b8?platform=desktop#view=DELTA";
                         break;
                     case 'Epsilon':
                         link = "https://www.appsheet.com/start/be5b647d-ede2-4cf2-a0f6-805e545d70b8?platform=desktop#view=EPSILON";
                         break;
-                    case 'Kappa':
-                        link = "https://www.appsheet.com/start/be5b647d-ede2-4cf2-a0f6-805e545d70b8?platform=desktop#view=KAPPA";
+                    case 'Sigma':
+                        link = "https://www.appsheet.com/start/be5b647d-ede2-4cf2-a0f6-805e545d70b8?platform=desktop#view=SIGMA";
                         break;
                     case 'Sirius':
                         link = "https://www.appsheet.com/start/be5b647d-ede2-4cf2-a0f6-805e545d70b8?platform=desktop#view=SIRIUS";
                         break;
+                    case 'Kappa':
+                        link = "https://www.appsheet.com/start/be5b647d-ede2-4cf2-a0f6-805e545d70b8?platform=desktop#view=KAPPA";
+                        break;
+                    case 'Theta':
+                        link = "https://www.appsheet.com/start/be5b647d-ede2-4cf2-a0f6-805e545d70b8?platform=desktop#view=THETA";
+                        break;
+                    case 'Zeta':
+                        link = "https://www.appsheet.com/start/be5b647d-ede2-4cf2-a0f6-805e545d70b8?platform=desktop#view=ZETA";
+                        break;
+                    case 'Omega':
+                        link = "https://www.appsheet.com/start/be5b647d-ede2-4cf2-a0f6-805e545d70b8?platform=desktop#view=OMEGA";
+                        break;
                 }
             } else if (department === 'Coding') {
-                link = "https://www.appsheet.com/start/be5b647d-ede2-4cf2-a0f6-805e545d70b8?platform=desktop#view=Coding";
+                link = "https://www.appsheet.com/start/be5b647d-ede2-4cf2-a0f6-805e545d70b8?platform=desktop#view=CODING";
             }
-            window.open(link, '_blank');
+
+            // Show loading screen
+            document.getElementById('loadingScreen').style.display = 'flex';
+
+            // Simulate a delay to display the loading screen (for demo purposes)
+            setTimeout(function() {
+                window.open(link, '_blank');
+                document.getElementById('loadingScreen').style.display = 'none'; // Hide loading screen after opening the link
+            }, 2000);
         }
     </script>
 </body>
