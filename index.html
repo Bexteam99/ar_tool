@@ -10,13 +10,14 @@
         body {
             font-family: Arial, sans-serif;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
             height: 100vh;
             background-image: url('Background.jpg'); /* Add your background image URL here */
-            background-size: cover; /* Cover the entire body */
-            background-position: center; /* Center the image */
-            background-repeat: no-repeat; /* Do not repeat the image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             margin: 0;
             position: relative;
         }
@@ -32,10 +33,15 @@
             height: auto;
         }
 
+        .section {
+            margin-bottom: 30px;
+            text-align: center; /* Center the section header */
+        }
+
         .button-container {
             display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
+            flex-wrap: wrap; /* Wrap buttons to fit screen */
+            gap: 15px; /* Reduced gap between buttons */
             justify-content: center;
         }
 
@@ -44,16 +50,16 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 150px;
-            height: 150px;
+            width: 100px; /* Reduced width */
+            height: 100px; /* Reduced height */
             border: 2px solid #7851A9;
             border-radius: 10px;
             background-color: #7851A9;
             color: #fff;
             text-decoration: none;
-            font-size: 18px;
+            font-size: 14px; /* Adjust font size */
             font-weight: bold;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(103, 75, 75, 0.1);
             transition: all 0.3s ease;
         }
 
@@ -63,8 +69,8 @@
         }
 
         .nav-button i {
-            font-size: 40px;
-            margin-bottom: 10px;
+            font-size: 30px; /* Adjusted icon size */
+            margin-bottom: 5px; /* Reduced margin below icon */
         }
 
         .footer {
@@ -74,80 +80,6 @@
             font-size: 14px;
             color: #555;
         }
-
-        /* Popup modal */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-content {
-            background-color: white;
-            margin: auto;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            width: 300px;
-            text-align: center;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .close:hover {
-            color: #333;
-        }
-
-        select {
-            padding: 10px;
-            margin-top: 20px;
-            width: 100%;
-            font-size: 16px;
-            border: 2px solid #7851A9;
-            border-radius: 5px;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-
-        select:focus {
-            border-color: #c6bbd3;
-            outline: none;
-        }
-
-        .submit-btn {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #7851A9;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 5px;
-            width: 100%;
-        }
-
-        .submit-btn:hover {
-            background-color: #c6bbd3;
-        }
     </style>
 </head>
 <body>
@@ -155,6 +87,11 @@
     <div class="logo">
         <img src="Clarity_Logo.png" alt="Logo">
     </div>
+
+    <!-- AR Section -->
+
+    <div class="section">
+        <h2>Access AR</h2>
 
     <div class="button-container">
         <button class="nav-button" onclick="openModal('Alpha')">
@@ -192,18 +129,15 @@
             <i class="fas fa-infinity"></i> Omega
         </button>
     </div>
+    </div>
 
-    <!-- Modal -->
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2>Select Department</h2>
-            <select id="department">
-                <option value="">Select</option>
-                <option value="AR">AR</option>
-                <option value="Coding">Coding</option>
-            </select>
-            <button class="submit-btn" onclick="routeToApp()">Go</button>
+    <!-- Coding Section (Single Button) -->
+    <div class="section">
+        <h2>Access Coding</h2>
+        <div class="button-container">
+            <button class="nav-button" onclick="openLink('Coding')">
+                <i class="fas fa-code"></i> Coding
+            </button>
         </div>
     </div>
 
@@ -213,87 +147,55 @@
     </div>
 
     <script>
-        var selectedPractice = "";
-
-        function openModal(practice) {
-            selectedPractice = practice;
-            document.getElementById("myModal").style.display = "flex";
-        }
-
-        function closeModal() {
-            document.getElementById("myModal").style.display = "none";
-        }
-
-        function routeToApp() {
-            var department = document.getElementById("department").value;
+        function openLink(department, practice) {
             var link;
+            if (department === 'AR') {
+                switch (practice) {
+                    case 'Alpha':
+                        link = "https://www.appsheet.com/start/be5b647d-ede2-4cf2-a0f6-805e545d70b8?platform=desktop#view=ALPHA";
+                        break;
+                    case 'Beta':
+                        link = "https://www.appsheet.com/start/be5b647d-ede2-4cf2-a0f6-805e545d70b8?platform=desktop#view=BETA";
+                        break;
+                    case 'Delta':
+                        link = "https://www.appsheet.com/start/be5b647d-ede2-4cf2-a0f6-805e545d70b8?platform=desktop#view=DELTA";
+                        break;
+                    case 'Gamma':
+                        link = "https://www.appsheet.com/start/be5b647d-ede2-4cf2-a0f6-805e545d70b8?platform=desktop#view=GAMMA";
+                        break;    
+                    case 'Sigma':
+                        link = "https://www.appsheet.com/start/be5b647d-ede2-4cf2-a0f6-805e545d70b8?platform=desktop#view=SIGMA";
+                        break;
+                    case 'Zeta':
+                        link = "https://www.appsheet.com/start/be5b647d-ede2-4cf2-a0f6-805e545d70b8?platform=desktop#view=ZETA";
+                        break;
+                    case 'Theta':
+                        link = "https://www.appsheet.com/start/be5b647d-ede2-4cf2-a0f6-805e545d70b8?platform=desktop#view=THETA";
+                        break;
+                    case 'Epsilon':
+                        link = "https://www.appsheet.com/start/be5b647d-ede2-4cf2-a0f6-805e545d70b8?platform=desktop#view=EPSILON";
+                        break;
+                    case 'Kappa':
+                        link = "https://www.appsheet.com/start/be5b647d-ede2-4cf2-a0f6-805e545d70b8?platform=desktop#view=KAPPA";
+                        break;
+                    case 'Sirius':
+                        link = "https://www.appsheet.com/start/be5b647d-ede2-4cf2-a0f6-805e545d70b8?platform=desktop#view=SIRIUS";
+                        break;
+                    case 'Omega':
+                        link = "https://www.appsheet.com/start/be5b647d-ede2-4cf2-a0f6-805e545d70b8?platform=desktop#view=OMEGA";
+                        break;      
 
-            if (department === "") {
-                alert("Please select a department");
-                return;
+                    // Add cases for other practices as needed
+                }
+            } else if (department === 'Coding') {
+                link = "https://www.appsheet.com/start/be5b647d-ede2-4cf2-a0f6-805e545d70b8?platform=desktop#view=CODING";
             }
 
-            switch (selectedPractice) {
-                case "Alpha":
-                    link = department === "AR"
-                        ? "https://www.appsheet.com/start/e17c04a7-6a98-4a5c-9f9d-8252ac9d0f35?platform=desktop#view=AR%20MENU"
-                        : "https://www.appsheet.com/start/e17c04a7-6a98-4a5c-9f9d-8252ac9d0f35?platform=desktop#view=CODING%20MENU";
-                    break;
-                case "Beta":
-                    link = department === "AR"
-                        ? "https://www.appsheet.com/start/f83d4311-e5a4-432c-b882-3059d454fab5?platform=desktop#view=AR%20MENU"
-                        : "https://www.appsheet.com/start/f83d4311-e5a4-432c-b882-3059d454fab5?platform=desktop#view=CODING%20MENU";
-                    break;
-                case "Gamma":
-                    link = department === "AR"
-                        ? "https://www.appsheet.com/start/b8dba1aa-81de-41bf-8ff0-7238d87b1d3f?platform=desktop#view=AR%20MENU"
-                        : "https://www.appsheet.com/start/b8dba1aa-81de-41bf-8ff0-7238d87b1d3f?platform=desktop#view=CODING%20MENU";
-                    break;
-                case "Delta":
-                    link = department === "AR"
-                        ? "https://www.appsheet.com/start/ca6e4647-4612-4de5-ab50-88bfe6bc2ffb?platform=desktop#view=AR%20MENU"
-                        : "https://www.appsheet.com/start/ca6e4647-4612-4de5-ab50-88bfe6bc2ffb?platform=desktop#view=CODING%20MENU";
-                    break;
-                case "Epsilon":
-                    link = department === "AR"
-                        ? "https://www.appsheet.com/start/f8818f11-d261-479f-9fe8-bd00ea350a37?platform=desktop#view=AR%20MENU"
-                        : "https://www.appsheet.com/start/f8818f11-d261-479f-9fe8-bd00ea350a37?platform=desktop#view=CODING%20MENU";
-                    break;
-                case "Sigma":
-                    link = department === "AR"
-                        ? "https://www.appsheet.com/start/b9c87de6-dd1c-4490-a2dd-31a51f8d40f9?platform=desktop#view=AR%20MENU"
-                        : "https://www.appsheet.com/start/b9c87de6-dd1c-4490-a2dd-31a51f8d40f9?platform=desktop#view=CODING%20MENU";
-                    break;
-                case "Sirius":
-                    link = department === "AR"
-                        ? "https://www.appsheet.com/start/b452bbd7-c878-49e5-bb16-32703e10406d?platform=desktop#view=AR%20MENU"                 
-                        : "https://www.appsheet.com/start/b452bbd7-c878-49e5-bb16-32703e10406d?platform=desktop#view=CODING%20MENU";
-                    break;
-                case "Kappa":
-                    link = department === "AR"
-                        ? "https://www.appsheet.com/start/2a965a52-8c4b-408b-8123-2e79dc1f9047?platform=desktop#view=AR%20MENU"
-                        : "https://www.appsheet.com/start/2a965a52-8c4b-408b-8123-2e79dc1f9047?platform=desktop#view=CODING%20MENU";
-                    break;
-                case "Theta":
-                    link = department === "AR"
-                        ? "https://www.appsheet.com/start/498841d0-6705-4977-9e04-4acf909f5051?platform=desktop#view=AR%20MENU"
-                        : "https://www.appsheet.com/start/498841d0-6705-4977-9e04-4acf909f5051?platform=desktop#view=CODING%20MENU";
-                    break;
-                case "Zeta":
-                    link = department === "AR"
-                        ? "https://www.appsheet.com/start/2269df5a-2549-4e79-8fec-2cdf52e6f7ae?platform=desktop#view=AR%20MENU"
-                        : "https://www.appsheet.com/start/2269df5a-2549-4e79-8fec-2cdf52e6f7ae?platform=desktop#view=CODING%20MENU";
-                    break;
-                case "Omega":
-                    link = department === "AR"
-                        ? "https://www.appsheet.com/start/e2f69520-d005-49ed-b475-b0520aa2df16?platform=desktop#view=AR%20MENU"
-                        : "https://www.appsheet.com/start/e2f69520-d005-49ed-b475-b0520aa2df16?platform=desktop#view=CODING%20MENU";
-                    break;
+            if (link) {
+                window.open(link, "_blank");
+            } else {
+                alert("No link available for this practice.");
             }
-            
-            // Open the link in a new tab
-            window.open(link, '_blank');
-            closeModal();
         }
     </script>
 </body>
