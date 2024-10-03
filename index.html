@@ -228,18 +228,22 @@
                     case 'Omega':
                         link = "https://www.appsheet.com/start/be5b647d-ede2-4cf2-a0f6-805e545d70b8?platform=desktop#view=OMEGA";
                         break;
+                    default:
+                        link = "#"; // Fallback link
                 }
             } else if (department === 'Coding') {
-                link = "https://www.appsheet.com/start/be5b647d-ede2-4cf2-a0f6-805e545d70b8?platform=desktop#view=CODING";
+                link = "https://www.appsheet.com/start/your-coding-link-here"; // Replace with actual coding link
             }
-
+            
             // Show loading screen
-            document.getElementById('loadingScreen').style.display = 'flex';
-
-            // Navigate to the link after a delay to show the loading screen
+            document.getElementById("loadingScreen").style.display = "flex";
+            
+            // Open link in a new tab after 3 seconds
             setTimeout(function() {
-                window.location.href = link;
-            }, 1000); // Delay for 1 second
+                window.open(link, "_blank");
+                document.getElementById("loadingScreen").style.display = "none"; // Hide loading screen after the link is opened
+                // Optionally, navigate back to the main screen here if needed
+            }, 3000);
         }
     </script>
 </body>
